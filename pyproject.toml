@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "f1-rag"
+version = "0.1.0"
+description = "FIA Formula 1 Regulations RAG System"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "pymupdf>=1.24",
+    "qdrant-client>=1.10",
+    "sentence-transformers>=3.1",
+    "torch>=2.3",
+    "rank-bm25>=0.2.2",
+    "langchain-core>=0.3",
+    "langchain-ollama>=0.2",
+    "httpx>=0.27",
+    "beautifulsoup4>=4.12",
+    "lxml>=5.2",
+    "python-dotenv>=1.0",
+    "aiosqlite>=0.20",
+    "pytest>=8.2",
+    "pytest-asyncio>=0.23",
+    "pytest-httpx>=0.30",
+    "anyio>=4.4",
+    "tiktoken>=0.7",
+    "transformers>=4.44",
+    "accelerate>=0.33",
+]
+
+[project.optional-dependencies]
+frontend = [
+    "streamlit>=1.40",
+    "requests>=2.31",
+]
+dev = [
+    "ruff>=0.5",
+    "mypy>=1.10",
+]
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["app*"]
